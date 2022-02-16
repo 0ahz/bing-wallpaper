@@ -12,7 +12,7 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {
   const url = 'https://cn.bing.com/HPImageArchive.aspx'
-  const query = {
+  const query: Record<string, any> = {
     format: "js",
     idx: 0,
     n: 1,
