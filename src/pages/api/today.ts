@@ -16,8 +16,9 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {
   await corsMiddleware(req, res)
-  const bingUrl = 'https://cn.bing.com'
+  const bingUrl = 'https://www.bing.com'
   const query: Record<string, any> = {
+    mkt: 'en-US',
     format: 'js',
     idx: 0,
     n: 1,
