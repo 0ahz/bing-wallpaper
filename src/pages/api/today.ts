@@ -4,17 +4,27 @@ import { withQuery } from 'ufo'
 import cors from 'cors'
 import { request } from 'utils/request'
 import { createMiddleware } from 'utils/middleware'
+import { createRateLimit } from 'utils/rate-limit'
 
-type Data = {
-  name: string
-}
+type ResultData = Record<string, any>
 
 const corsMiddleware = createMiddleware(cors({ methods: ['GET'] }))
 
+const rateLimit = createRateLimit({
+  interval: 60 * 1000, // 60 seconds
+  uniqueTokenPerInterval: 500, // Max 500 users per second
+})
+
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data>
+  res: NextApiResponse<ResultData>
 ) {
+  try {
+    await rateLimit.check(res, 10, 'CACHE_TOKEN')
+  } catch (err) {
+    res.status(429).json({ error: 'Rate limit exceeded' })
+    return
+  }
   await corsMiddleware(req, res)
   const bingUrl = 'https://www.bing.com'
   const query: Record<string, any> = {
