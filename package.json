@@ -1,28 +1,33 @@
 {
   "name": "bing-wallpaper",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier --write src"
   },
   "dependencies": {
-    "cors": "^2.8.5",
-    "lodash": "^4.17.21",
-    "lru-cache": "^7.13.1",
-    "next": "12.2.2",
+    "@t3-oss/env-nextjs": "^0.6.0",
+    "next": "13.4.7",
+    "next-themes": "^0.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "ufo": "^0.8.5"
+    "ufo": "^1.1.2",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
-    "@types/cors": "^2.8.12",
-    "@types/lodash": "^4.14.182",
-    "@types/node": "18.0.6",
-    "@types/react": "18.0.15",
-    "eslint": "8.20.0",
-    "eslint-config-next": "12.2.2",
-    "typescript": "4.7.4"
+    "@types/node": "20.3.3",
+    "@types/react": "18.2.14",
+    "autoprefixer": "^10.4.14",
+    "eslint": "8.44.0",
+    "eslint-config-next": "13.4.7",
+    "postcss": "^8.4.24",
+    "prettier": "^2.8.8",
+    "prettier-plugin-tailwindcss": "^0.3.0",
+    "tailwindcss": "^3.3.2",
+    "typescript": "5.1.6"
   }
 }
