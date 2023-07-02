@@ -3,9 +3,10 @@ import Link from 'next/link'
 import { env } from '~~/env.mjs'
 
 export default async function Home() {
-  const result = await fetch(`${env.NEXT_PUBLIC_URL}/api/today`).then(res =>
-    res.json(),
-  )
+  const result = await fetch(`${env.NEXT_PUBLIC_URL}/api/today`, {
+    next: { revalidate: 0 },
+    cache: 'no-store',
+  }).then(res => res.json())
 
   return (
     <main className='space-y-4 p-4'>
